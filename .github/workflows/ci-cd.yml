@@ -37,23 +37,8 @@ jobs:
       - name: Build application
         run: bun run build
 
-      - name: Extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ github.actor }}/rescanny-api
-
-      - name: Build and push image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-
       - name: Write release version to file
-        run: echo "${{ github.ref_name }}" > VERSION
+        run: echo "${{ github.ref_name }}" > dist/VERSION
 
       - name: Upload dist as artifact
         uses: actions/upload-artifact@v4
