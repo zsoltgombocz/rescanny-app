@@ -1,5 +1,6 @@
 import type * as React from "react";
 import type { JSX } from "react";
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 import { useAppVersion } from "../../hooks/use-app-version.ts";
 import { useApiStatusStore } from "../../store/api-status.ts";
@@ -10,6 +11,7 @@ export function Versions({
 }: React.HTMLProps<HTMLParagraphElement>): JSX.Element {
 	const data = useApiStatusStore((store) => store.data);
 	const { version: appVersion } = useAppVersion();
+	const { t } = useTranslation();
 
 	return (
 		<Text
@@ -38,7 +40,7 @@ export function Versions({
 				<path d="M4.93 19.07 7.76 16.24"></path>
 				<path d="M16.24 7.76l2.83-2.83"></path>
 			</svg>
-			<span>Verzió:</span>
+			<span>{t("version")}:</span>
 			<span>APP {appVersion}</span>
 			<span>•</span>
 			<span>API {data?.version}</span>
