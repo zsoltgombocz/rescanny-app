@@ -1,6 +1,6 @@
 import type { JSX, PropsWithoutRef, SVGProps } from "react";
 
-export function ArrowLeft({
+export default function ArrowLeftIcon({
 	...props
 }: PropsWithoutRef<SVGProps<SVGElement>>): JSX.Element {
 	return (
