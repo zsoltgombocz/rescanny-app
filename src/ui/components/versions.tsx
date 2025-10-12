@@ -1,9 +1,9 @@
 import type * as React from "react";
 import type { JSX } from "react";
 import { twMerge } from "tailwind-merge";
+import { useAppVersion } from "../../hooks/use-app-version.ts";
 import { useApiStatusStore } from "../../store/api-status.ts";
 import { Text } from "./text.tsx";
-import { useAppVersion } from "../../hooks/use-app-version.ts";
 
 export function Versions({
 	className,
