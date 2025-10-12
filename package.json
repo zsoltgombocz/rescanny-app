@@ -11,8 +11,14 @@
 		"biome:check": "biome check"
 	},
 	"dependencies": {
+		"@tailwindcss/vite": "^4.1.14",
+		"axios": "^1.12.2",
 		"react": "^19.1.1",
-		"react-dom": "^19.1.1"
+		"react-dom": "^19.1.1",
+		"react-router": "^7.9.4",
+		"tailwind-merge": "^3.3.1",
+		"tailwindcss": "^4.1.14",
+		"zustand": "^5.0.8"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.5",
