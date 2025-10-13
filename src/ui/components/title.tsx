@@ -7,10 +7,10 @@ type Props = React.HTMLProps<HTMLDivElement> & {
 };
 
 const baseClasses = {
-	h1: "text-3xl sm:text-4xl font-bold",
-	h2: "text-2xl sm:text-3xl font-bold",
-	h3: "text-xl sm:text-2xl font-semibold",
-	h4: "text-lg sm:text-xl font-medium",
+	h1: "text-3xl sm:text-4xl font-semibold",
+	h2: "text-2xl sm:text-3xl font-semibold",
+	h3: "text-xl sm:text-2xl font-medium",
+	h4: "text-lg sm:text-xl",
 };
 
 export function Title({
