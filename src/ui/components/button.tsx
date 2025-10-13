@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 type Props = React.HTMLAttributes<HTMLElement> & {
 	variant: "primary" | "gray";
 	icon?: JSX.Element;
-	href: string;
+	href?: string;
 };
 export function Button({
 	href,
@@ -17,8 +17,9 @@ export function Button({
 	...props
 }: Props): JSX.Element {
 	const classes = twMerge(
-		"inline-flex items-center justify-center gap-2 transition font-semibold text-white px-5 py-3 w-full",
-		variant === "primary" && "",
+		"text-sm inline-flex items-center justify-center gap-2 transition font-semibold text-white px-5 py-3 w-full",
+		variant === "primary" &&
+			"bg-gradient-to-r from-indigo-600 to-indigo-500 rounded-xl shadow-lg hover:from-indigo-500 hover:to-indigo-400",
 		variant === "gray" &&
 			"bg-gray-800 rounded-xl  border border-gray-700 hover:border-gray-600 hover:bg-gray-750/90",
 		className,
