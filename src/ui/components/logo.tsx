@@ -9,7 +9,7 @@ export function Logo({
 		<div
 			className={twMerge(
 				className,
-				"relative inline-flex items-center justify-center",
+				"relative inline-flex items-center justify-center w-fit",
 			)}
 		>
 			<div
