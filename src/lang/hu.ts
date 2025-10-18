@@ -12,5 +12,24 @@ export default {
 			loginButton: "Bejelentkezés",
 			registerButton: "Regisztráció",
 		},
+		login: {
+			subTitle: "Lépj be a fiókodba vagy hozz létre egy újat",
+			loginButton: "Bejelentkezés",
+			link: {
+				forgotPassword: "Elfelejtett jelszó?",
+				otp: "Belépés egyszeri kóddal",
+			},
+			googleButton: "Folytatás Google-lel",
+			facebookButton: "Folytatás Facebook-kal",
+		},
+		input: {
+			emailLabel: "E-mail cím",
+			emailPlaceholder: "te@pelda.hu",
+			passwordLabel: "Jelszó",
+			passwordPlaceholder: "••••••••",
+		},
+		conjugation: {
+			or: "Vagy",
+		},
 	},
 };
