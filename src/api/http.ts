@@ -21,6 +21,7 @@ const http = axios.create({
 	baseURL: BASE_URL,
 	timeout: 10_000,
 	withCredentials: true,
+	withXSRFToken: true,
 });
 
 http.interceptors.request.use((config) => {
