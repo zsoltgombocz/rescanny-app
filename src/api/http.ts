@@ -9,6 +9,7 @@ import {
 	NetworkError,
 	ValidationError,
 } from "./errors";
+import type { LaravelValidationResponse } from "./types";
 
 const APP_ENV = import.meta.env.APP_ENV ?? "local";
 
@@ -46,9 +47,11 @@ const transformAxiosError = (err: AxiosError): AppError => {
 	if (!err.response) {
 		return new NetworkError();
 	}
-	console.log(err.response.data);
+
 	if (err.response.status === 422) {
-		return new ValidationError([]);
+		const responseBody = err.response.data as LaravelValidationResponse;
+
+		return new ValidationError(responseBody.errors, responseBody.message);
 	}
 	const message =
 		(err.response.data as AxiosError).message ?? err.response.statusText;
@@ -61,6 +64,14 @@ export function get<T = unknown>(
 	cfg?: AxiosRequestConfig,
 ): Promise<T> {
 	return http.get<T, T>(url, cfg);
+}
+
+export function post<T = unknown, D = unknown>(
+	url: string,
+	data?: D,
+	cfg?: AxiosRequestConfig,
+): Promise<T> {
+	return http.post<T, T, D>(url, data, cfg);
 }
 
 export default http;

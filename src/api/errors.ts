@@ -1,3 +1,5 @@
+import type { LaravelErrorBag } from "./types";
+
 export type ErrorType = "Network" | "Api" | "Validation";
 
 export abstract class AppError extends Error {
@@ -35,10 +37,14 @@ export class ApiError extends AppError {
 
 export class ValidationError extends AppError {
 	type: ErrorType = "Validation";
-	messages: string[];
-	constructor(messages: string[], message = "Validation error") {
+	bag: LaravelErrorBag;
+	constructor(bag: LaravelErrorBag, message = "Validation error") {
 		super(message);
-		this.messages = messages;
+		this.bag = bag;
+	}
+
+	public getErrorBag(): LaravelErrorBag {
+		return this.bag;
 	}
 }
 

@@ -1,17 +1,59 @@
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
+import basicLogin from "../../actions/login";
+import { ValidationError } from "../../api/errors";
 import { Button } from "../components/button";
 import Divider from "../components/divider";
 import Input from "../components/form/input";
 import Link from "../components/link";
+import { Text } from "../components/text";
 import { Versions } from "../components/versions";
 import WelcomeSection from "../components/welcome-section";
+import LoadingIcon from "../icons/loading";
 import LockIcon from "../icons/lock";
 import LoginIcon from "../icons/login";
 import UserIcon from "../icons/user";
 import PageLayout from "../layout/page-layout";
 
+type Fields = {
+	email: string;
+	password: string;
+};
+
 export default function Login() {
 	const { t } = useTranslation();
+
+	const {
+		register,
+		handleSubmit,
+		setError,
+		formState: { errors, isSubmitting },
+	} = useForm<Fields>();
+
+	const navigate = useNavigate();
+
+	const onSubmit = async (data: Fields) => {
+		const { success, error } = await basicLogin(data.email, data.password);
+
+		if (success) {
+			return navigate("/user/profile");
+		}
+
+		if (error && error instanceof ValidationError) {
+			const errorBag = error.getErrorBag();
+
+			if (!errorBag) {
+				setError("root", { type: "server", message: error.message });
+				return;
+			}
+
+			for (const [field, messages] of Object.entries(errorBag)) {
+				const message = messages?.[0] ?? "Invalid";
+				setError(field as keyof Fields, { type: "server", message: message });
+			}
+		}
+	};
 
 	return (
 		<PageLayout>
@@ -21,23 +63,41 @@ export default function Login() {
 					subtitle={t("login.subTitle")}
 				/>
 				<div className={"flex flex-col gap-5"}>
-					<form className={"flex flex-col gap-5"}>
+					<form
+						className={"flex flex-col gap-5"}
+						onSubmit={handleSubmit(onSubmit)}
+					>
+						{errors.root?.message && (
+							<div className="border-rose-500 bg-rose-500/10 p-3 rounded-xl border">
+								<Text className={"text-sm text-white"}>
+									{errors.root.message}
+								</Text>
+							</div>
+						)}
 						<Input
+							{...register("email", { required: true })}
+							aria-invalid={!!errors.email}
 							icon={<UserIcon />}
 							name="email"
 							type="email"
 							label={t("input.emailLabel")}
 							placeholder={t("input.emailPlaceholder")}
 							autocomplete="email"
+							disabled={isSubmitting}
+							errorMessage={errors.email?.message}
 						/>
 
 						<Input
+							{...register("password", { required: true })}
+							aria-invalid={!!errors.password}
 							icon={<LockIcon />}
-							name="passsord"
+							name="password"
 							type="password"
 							label={t("input.passwordLabel")}
 							placeholder={t("input.passwordPlaceholder")}
-							autocomplete="email"
+							autocomplete="password"
+							disabled={isSubmitting}
+							errorMessage={errors.password?.message}
 						/>
 
 						<div className={"flex justify-between"}>
@@ -50,11 +110,16 @@ export default function Login() {
 						</div>
 
 						<Button
-							icon={<LoginIcon className={"fill-white"} />}
+							icon={!isSubmitting && <LoginIcon className={"fill-white"} />}
 							variant="primary"
-							onClick={() => console.log("click")}
+							type="submit"
+							disabled={isSubmitting}
 						>
-							{t("login.loginButton")}
+							{isSubmitting ? (
+								<LoadingIcon className={"w-6 h-6"} />
+							) : (
+								t("login.loginButton")
+							)}
 						</Button>
 					</form>
 
