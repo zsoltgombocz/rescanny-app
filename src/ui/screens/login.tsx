@@ -15,6 +15,7 @@ import LockIcon from "../icons/lock";
 import LoginIcon from "../icons/login";
 import UserIcon from "../icons/user";
 import PageLayout from "../layout/page-layout";
+import { useUserStore, type User } from "../../store/user";
 
 type Fields = {
 	email: string;
@@ -32,11 +33,13 @@ export default function Login() {
 	} = useForm<Fields>();
 
 	const navigate = useNavigate();
+	const { hydrate } = useUserStore();
 
 	const onSubmit = async (data: Fields) => {
-		const { success, error } = await basicLogin(data.email, data.password);
+		const { success, error, data: user } = await basicLogin(data.email, data.password);
 
 		if (success) {
+			hydrate(user as User)
 			return navigate("/user/profile");
 		}
 

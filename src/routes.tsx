@@ -1,10 +1,10 @@
 import { createBrowserRouter, type RouteObject } from "react-router";
-import { requireAuth, requireGuest } from "./loaders/auth";
 import { rootLoader } from "./loaders/root-loader";
 import { AppLayout } from "./ui/layout/app-layout";
 import Login from "./ui/screens/login";
 import NotFound from "./ui/screens/not-found";
 import Welcome from "./ui/screens/welcome";
+import { Guard } from "./ui/layout/guard";
 
 export enum AuthPolicy {
 	None = "none",
@@ -12,26 +12,20 @@ export enum AuthPolicy {
 	Required = "required",
 }
 
-export type AppRouteObject = RouteObject & {
-	auth?: AuthPolicy;
-	children?: AppRouteObject[];
-};
-
-export const routes: AppRouteObject[] = [
+export const routes: RouteObject[] = [
 	{
 		id: "root",
 		path: "/",
 		element: <AppLayout />,
 		loader: rootLoader,
 		children: [
-			{ index: true, element: <div>dashboard</div>, loader: requireAuth },
+			{ index: true, element: <Guard policy={AuthPolicy.Required}><div>dashboard</div></Guard> },
 			{
 				path: "user/profile",
-				element: <div>profile</div>,
-				loader: requireAuth,
+				element: <Guard policy={AuthPolicy.Required}><div>profile</div></Guard>,
 			},
 			{ path: "welcome", element: <Welcome /> },
-			{ path: "login", element: <Login />, loader: requireGuest },
+			{ path: "login", element: <Guard policy={AuthPolicy.Guest}><Login /></Guard> },
 			{ path: "*", element: <NotFound /> },
 		],
 	},
