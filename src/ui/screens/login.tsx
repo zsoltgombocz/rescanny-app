@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import basicLogin from "../../actions/login";
 import { ValidationError } from "../../api/errors";
+import { type User, useUserStore } from "../../store/user";
 import { Button } from "../components/button";
 import Divider from "../components/divider";
 import Input from "../components/form/input";
@@ -15,7 +16,6 @@ import LockIcon from "../icons/lock";
 import LoginIcon from "../icons/login";
 import UserIcon from "../icons/user";
 import PageLayout from "../layout/page-layout";
-import { useUserStore, type User } from "../../store/user";
 
 type Fields = {
 	email: string;
@@ -36,10 +36,14 @@ export default function Login() {
 	const { hydrate } = useUserStore();
 
 	const onSubmit = async (data: Fields) => {
-		const { success, error, data: user } = await basicLogin(data.email, data.password);
+		const {
+			success,
+			error,
+			data: user,
+		} = await basicLogin(data.email, data.password);
 
 		if (success) {
-			hydrate(user as User)
+			hydrate(user as User);
 			return navigate("/user/profile");
 		}
 

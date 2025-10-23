@@ -5,15 +5,13 @@ export async function rootLoader() {
 	const { hydrated, hydrate } = userGetState();
 
 	if (!hydrated && typeof window !== "undefined") {
-		const me = await httpGet("/user/me").catch(
-			() => null,
-		);
+		const me = await httpGet("/user/me").catch(() => null);
 
-		const user = me ? me as User : null;
+		const user = me ? (me as User) : null;
 
 		hydrate(user);
 	}
-	
+
 	const { user } = userGetState();
 
 	return { user };

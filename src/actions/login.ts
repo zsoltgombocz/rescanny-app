@@ -5,7 +5,7 @@ import { notifyError, notifySuccess } from "../ui/notify";
 type ResultObject = {
 	success: boolean;
 	error: AnyAppError | null;
-	data?: any
+	data?: any;
 };
 
 export default async function basicLogin(
@@ -13,10 +13,13 @@ export default async function basicLogin(
 	password: string,
 ): Promise<ResultObject> {
 	try {
-		const data = await httpPost<{ message: string, user: any }>("/auth/login/basic", {
-			email,
-			password,
-		});
+		const data = await httpPost<{ message: string; user: any }>(
+			"/auth/login/basic",
+			{
+				email,
+				password,
+			},
+		);
 
 		notifySuccess(data.message);
 
