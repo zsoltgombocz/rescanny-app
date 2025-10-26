@@ -1,29 +1,19 @@
 import { type AnyAppError, ValidationError } from "../api/errors";
 import { post as httpPost } from "../api/http";
+import type { ActionResultObject } from "../api/types";
 import { notifyError, notifySuccess } from "../ui/notify";
 
-type ResultObject = {
-	success: boolean;
-	error: AnyAppError | null;
-	data?: any;
-};
-
-export default async function basicLogin(
+export default async function magicLinkAuthentication(
 	email: string,
-	password: string,
-): Promise<ResultObject> {
+): Promise<ActionResultObject> {
 	try {
-		const data = await httpPost<{ message: string; user: any }>(
-			"/auth/login/basic",
-			{
-				email,
-				password,
-			},
-		);
+		const data = await httpPost<{ message: string }>("/auth/magic-link", {
+			email,
+		});
 
 		notifySuccess(data.message);
 
-		return { success: true, error: null, data: data.user };
+		return { success: true, error: null };
 	} catch (e: unknown) {
 		const error = e as AnyAppError;
 

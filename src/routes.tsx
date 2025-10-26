@@ -1,10 +1,10 @@
 import { createBrowserRouter, type RouteObject } from "react-router";
+import { magicLinkLoginLoader } from "./loaders/magic-link-login";
 import { rootLoader } from "./loaders/root-loader";
 import { AppLayout } from "./ui/layout/app-layout";
 import { Guard } from "./ui/layout/guard";
 import Login from "./ui/screens/login";
 import NotFound from "./ui/screens/not-found";
-import Welcome from "./ui/screens/welcome";
 
 export enum AuthPolicy {
 	None = "none",
@@ -35,7 +35,6 @@ export const routes: RouteObject[] = [
 					</Guard>
 				),
 			},
-			{ path: "welcome", element: <Welcome /> },
 			{
 				path: "login",
 				element: (
@@ -43,6 +42,12 @@ export const routes: RouteObject[] = [
 						<Login />
 					</Guard>
 				),
+				children: [
+					{
+						path: "magic-link",
+						loader: magicLinkLoginLoader,
+					},
+				],
 			},
 			{ path: "*", element: <NotFound /> },
 		],

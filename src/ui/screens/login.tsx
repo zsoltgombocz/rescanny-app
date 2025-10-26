@@ -1,9 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
-import basicLogin from "../../actions/login";
+import { Trans, useTranslation } from "react-i18next";
+import magicLinkAuthentication from "../../actions/magic-link-authentication";
 import { ValidationError } from "../../api/errors";
-import { type User, useUserStore } from "../../store/user";
 import { Button } from "../components/button";
 import Divider from "../components/divider";
 import Input from "../components/form/input";
@@ -12,7 +10,6 @@ import { Text } from "../components/text";
 import { Versions } from "../components/versions";
 import WelcomeSection from "../components/welcome-section";
 import LoadingIcon from "../icons/loading";
-import LockIcon from "../icons/lock";
 import LoginIcon from "../icons/login";
 import UserIcon from "../icons/user";
 import PageLayout from "../layout/page-layout";
@@ -29,22 +26,15 @@ export default function Login() {
 		register,
 		handleSubmit,
 		setError,
+		reset,
 		formState: { errors, isSubmitting },
 	} = useForm<Fields>();
 
-	const navigate = useNavigate();
-	const { hydrate } = useUserStore();
-
 	const onSubmit = async (data: Fields) => {
-		const {
-			success,
-			error,
-			data: user,
-		} = await basicLogin(data.email, data.password);
+		const { success, error } = await magicLinkAuthentication(data.email);
 
 		if (success) {
-			hydrate(user as User);
-			return navigate("/user/profile");
+			reset();
 		}
 
 		if (error && error instanceof ValidationError) {
@@ -94,28 +84,6 @@ export default function Login() {
 							errorMessage={errors.email?.message}
 						/>
 
-						<Input
-							{...register("password", { required: true })}
-							aria-invalid={!!errors.password}
-							icon={<LockIcon />}
-							name="password"
-							type="password"
-							label={t("input.passwordLabel")}
-							placeholder={t("input.passwordPlaceholder")}
-							autocomplete="password"
-							disabled={isSubmitting}
-							errorMessage={errors.password?.message}
-						/>
-
-						<div className={"flex justify-between"}>
-							<Link to={"/forget-password"} variant="primary">
-								{t("login.link.forgotPassword")}
-							</Link>
-							<Link to={"/login/otp"} variant="gray">
-								{t("login.link.otp")}
-							</Link>
-						</div>
-
 						<Button
 							icon={!isSubmitting && <LoginIcon className={"fill-white"} />}
 							variant="primary"
@@ -147,6 +115,19 @@ export default function Login() {
 					>
 						{t("login.facebookButton")}
 					</Button>
+					<Text className={"text-center text-sm text-gray-500"}>
+						<Trans
+							i18nKey={"login.acceptPrivacy"}
+							values={{
+								terms: t("login.link.terms"),
+								privacy: t("login.link.privacy"),
+							}}
+							components={[
+								<Link key={0} variant="primary" to={"/terms-and-conditions"} />,
+								<Link key={1} variant="primary" to={"/privacy"} />,
+							]}
+						></Trans>
+					</Text>
 				</div>
 			</div>
 

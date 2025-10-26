@@ -15,9 +15,11 @@ export default {
 		login: {
 			subTitle: "Lépj be a fiókodba vagy hozz létre egy újat",
 			loginButton: "Bejelentkezés",
+			acceptPrivacy:
+				"A folytatással elfogadod a <0>{{terms}}</0> és az <br /> <1>{{privacy}}</1>.",
 			link: {
-				forgotPassword: "Elfelejtett jelszó?",
-				otp: "Belépés egyszeri kóddal",
+				terms: "Általános Szerződési Feltételeket",
+				privacy: "Adatvédelmi Szabályzatot",
 			},
 			googleButton: "Folytatás Google-lel",
 			facebookButton: "Folytatás Facebook-kal",
@@ -25,8 +27,6 @@ export default {
 		input: {
 			emailLabel: "E-mail cím",
 			emailPlaceholder: "te@pelda.hu",
-			passwordLabel: "Jelszó",
-			passwordPlaceholder: "••••••••",
 		},
 		conjugation: {
 			or: "Vagy",
