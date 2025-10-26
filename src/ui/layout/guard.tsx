@@ -14,10 +14,10 @@ export function Guard({
 	const { user } = userGetState();
 
 	if (policy === AuthPolicy.Required && !user)
-		return <Navigate to={"/welcome"}></Navigate>;
+		return <Navigate to={"/login"}></Navigate>;
 
 	if (policy === AuthPolicy.Guest && user)
-		return <Navigate to={"/user/profile"}></Navigate>;
+		return <Navigate to={"/"}></Navigate>;
 
 	return <Fragment>{children}</Fragment>;
 }
