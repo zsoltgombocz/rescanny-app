@@ -6,7 +6,7 @@ export function LoadingFallback(): JSX.Element {
 	return (
 		<div
 			className={
-				"h-full w-full flex items-center justify-center gap-2 flex-col"
+				"flex-grow h-full w-full flex items-center justify-center gap-2 flex-col"
 			}
 		>
 			<LoadingIcon />

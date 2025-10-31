@@ -1,10 +1,15 @@
+import { lazy } from "react";
 import { createBrowserRouter, type RouteObject } from "react-router";
 import { magicLinkLoginLoader } from "./loaders/magic-link-login";
 import { rootLoader } from "./loaders/root-loader";
 import { AppLayout } from "./ui/layout/app-layout";
+import { FullPageLoader } from "./ui/layout/full-page-loader";
 import { Guard } from "./ui/layout/guard";
-import Login from "./ui/screens/login";
 import NotFound from "./ui/screens/not-found";
+
+const Home = lazy(() => import("./ui/screens/home"));
+const Login = lazy(() => import("./ui/screens/login"));
+const Profile = lazy(() => import("./ui/screens/profile"));
 
 export enum AuthPolicy {
 	None = "none",
@@ -18,12 +23,13 @@ export const routes: RouteObject[] = [
 		path: "/",
 		element: <AppLayout />,
 		loader: rootLoader,
+		hydrateFallbackElement: <FullPageLoader />,
 		children: [
 			{
 				index: true,
 				element: (
 					<Guard policy={AuthPolicy.Required}>
-						<div>dashboard</div>
+						<Home />
 					</Guard>
 				),
 			},
@@ -31,7 +37,7 @@ export const routes: RouteObject[] = [
 				path: "user/profile",
 				element: (
 					<Guard policy={AuthPolicy.Required}>
-						<div>profile</div>
+						<Profile />
 					</Guard>
 				),
 			},
@@ -46,6 +52,7 @@ export const routes: RouteObject[] = [
 					{
 						path: "magic-link",
 						loader: magicLinkLoginLoader,
+						element: null,
 					},
 				],
 			},
