@@ -31,5 +31,9 @@ export default {
 		conjugation: {
 			or: "Vagy",
 		},
+		navbar: {
+			home: "Kezdőlap",
+			profile: "Profil",
+		},
 	},
 };
