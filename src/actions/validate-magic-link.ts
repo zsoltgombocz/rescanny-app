@@ -13,8 +13,9 @@ export default async function magicLinkValidation(
 				token,
 			},
 		);
-
-		notifySuccess(data.message);
+		if (data.message) {
+			notifySuccess(data.message);
+		}
 
 		return { success: true, error: null, data: data.user };
 	} catch (e: unknown) {

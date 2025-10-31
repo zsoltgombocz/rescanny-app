@@ -14,7 +14,9 @@ export async function magicLinkLoginLoader({ request }: LoaderFunctionArgs) {
 	const { success, data } = await magicLinkValidation(token);
 
 	if (success) {
-		hydrate(data as User);
+		if (data) {
+			hydrate(data as User);
+		}
 
 		return redirect("/");
 	}
