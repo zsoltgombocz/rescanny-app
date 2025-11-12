@@ -1,9 +1,9 @@
 import { type JSX, Suspense } from "react";
 import { Outlet, useNavigation } from "react-router";
+import { useUser } from "../../store/user";
 import Header from "../components/header";
 import Navbar from "../components/navbar/navbar";
 import { LoadingFallback } from "./loading-fallback";
-import { useUser } from "../../store/user";
 
 export function AppLayout(): JSX.Element {
 	const navigation = useNavigation();
