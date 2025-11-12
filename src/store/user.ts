@@ -1,9 +1,21 @@
 import { create } from "zustand";
 
+type Subscription = {
+	label: string;
+	price: string;
+	nextBilling: string;
+};
+
 export type User = {
-	id: number;
-	name: string;
+	id: string;
+	firstName: string;
+	lastName: string;
+	displayName: string;
+	avatar: string;
 	email: string;
+	lastLogin: string;
+	registeredRecently: boolean;
+	subscription: Subscription;
 } | null;
 
 type State = {
@@ -24,4 +36,6 @@ export const useUserStore = create<State & Actions>((set) => ({
 }));
 
 export const useUser = () => useUserStore((s) => s.user);
+export const useUserSubscription = () =>
+	useUserStore((s) => s.user?.subscription);
 export const userGetState = () => useUserStore.getState();

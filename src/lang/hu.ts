@@ -35,5 +35,29 @@ export default {
 			home: "Kezdőlap",
 			profile: "Profil",
 		},
+		subscriptionBadge: "{{type}} Előfizetés",
+		profile: {
+			logoutButton: "Kijelentkezés",
+			actions: "Műveletek",
+			deleteButton: "Fiók törlése",
+			accountSettings: {
+				title: "Fiók beállítások",
+				email: {
+					title: "E-mail cím módosítása",
+					subtitle: "Jelenlegi: {{email}}",
+				},
+				notifications: {
+					title: "Értesítése",
+					subtitle: "Email és push értesítések kezelése",
+				},
+			},
+			subscriptionSection: {
+				title: "Előfizetés",
+				modify: "Módosítás",
+				label: "Csomag",
+				price: "Ár",
+				nextBilling: "Következő fizetés",
+			},
+		},
 	},
 };
