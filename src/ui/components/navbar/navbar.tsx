@@ -15,7 +15,7 @@ export default function Navbar(): JSX.Element {
 				"fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-lg border-t border-gray-800 w-full"
 			}
 		>
-			<div className={"max-w-7xl mx-auto px-4"}>
+			<div className={"max-w-7xl mx-auto px-4 py-1"}>
 				<div className={"grid grid-cols-5 gap-1 py-3"}>
 					<NavItem
 						to="/"
