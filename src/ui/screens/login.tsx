@@ -16,7 +16,6 @@ import PageLayout from "../layout/page-layout";
 
 type Fields = {
 	email: string;
-	password: string;
 };
 
 export default function Login() {
@@ -71,6 +70,7 @@ export default function Login() {
 								</Text>
 							</div>
 						)}
+
 						<Input
 							{...register("email", { required: true })}
 							aria-invalid={!!errors.email}
