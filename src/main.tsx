@@ -5,7 +5,6 @@ import { RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 import en from "./lang/en.ts";
 import hu from "./lang/hu.ts";
-import { useApiStatusStore } from "./store/api-status.ts";
 
 import "./index.css";
 import { initReactI18next } from "react-i18next";
@@ -25,8 +24,6 @@ i18n.use(initReactI18next).init({
 if (!root) {
 	console.error("No root found!");
 } else {
-	void useApiStatusStore.getState().fetch();
-
 	createRoot(root).render(
 		<StrictMode>
 			<RouterProvider router={router}></RouterProvider>

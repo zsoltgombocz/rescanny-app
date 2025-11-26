@@ -1,7 +1,15 @@
 import type { AnyAppError } from "./errors";
 
+export type MaintenanceMode = {
+	active: boolean;
+	from: string | null;
+	message: string;
+	to: string | null;
+	upcoming: boolean;
+};
+
 export type ApiStatusPayload = {
-	ready: boolean;
+	maintenance: MaintenanceMode;
 	version: string;
 	time: string;
 };

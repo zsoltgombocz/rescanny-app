@@ -59,5 +59,16 @@ export default {
 				nextBilling: "Következő fizetés",
 			},
 		},
+		maintenance: {
+			title: "Karbantartás alatt!",
+			subtitle: "Hamarosan visszatérünk. Köszönjük a türelmedet!",
+		},
+		error: {
+			title: "Hiba történt!",
+			subtitle: "Valami hiba történt. Kérjük, próbáld újra.",
+		},
+		button: {
+			reloadPage: "Újrapróbálás",
+		},
 	},
 };
