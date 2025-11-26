@@ -1,15 +1,10 @@
-import { lazy } from "react";
 import { createBrowserRouter, type RouteObject } from "react-router";
+import { lazyRoute } from "./helpers/lazy-route";
 import { magicLinkLoginLoader } from "./loaders/magic-link-login";
 import { rootLoader } from "./loaders/root-loader";
 import { AppLayout } from "./ui/layout/app-layout";
 import { FullPageLoader } from "./ui/layout/full-page-loader";
-import { Guard } from "./ui/layout/guard";
 import NotFound from "./ui/screens/not-found";
-
-const Home = lazy(() => import("./ui/screens/home"));
-const Login = lazy(() => import("./ui/screens/login"));
-const Profile = lazy(() => import("./ui/screens/profile"));
 
 export enum AuthPolicy {
 	None = "none",
@@ -27,27 +22,18 @@ export const routes: RouteObject[] = [
 		children: [
 			{
 				index: true,
-				element: (
-					<Guard policy={AuthPolicy.Required}>
-						<Home />
-					</Guard>
-				),
+				lazy: lazyRoute(() => import("./ui/screens/home"), AuthPolicy.Required),
 			},
 			{
 				path: "user/profile",
-				element: (
-					<Guard policy={AuthPolicy.Required}>
-						<Profile />
-					</Guard>
+				lazy: lazyRoute(
+					() => import("./ui/screens/profile"),
+					AuthPolicy.Required,
 				),
 			},
 			{
 				path: "login",
-				element: (
-					<Guard policy={AuthPolicy.Guest}>
-						<Login />
-					</Guard>
-				),
+				lazy: lazyRoute(() => import("./ui/screens/login"), AuthPolicy.Guest),
 				children: [
 					{
 						path: "magic-link",
