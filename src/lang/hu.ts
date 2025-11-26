@@ -1,5 +1,6 @@
 export default {
 	translation: {
+		loading: "Betöltés",
 		pageNotFound: "Az oldal nem található",
 		pageNotFoundLonger:
 			"A keresett oldal nem létezik vagy áthelyezésre került.",

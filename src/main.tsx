@@ -15,7 +15,7 @@ const root = document.getElementById("root");
 
 i18n.use(initReactI18next).init({
 	resources: { hu, en },
-	lng: "hu",
+	lng: window.navigator.language,
 	interpolation: {
 		escapeValue: false,
 	},

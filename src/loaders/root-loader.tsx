@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import { get as httpGet } from "../api/http";
 import { useApiStatusStore } from "../store/api-status";
 import { type User, userGetState } from "../store/user";
@@ -17,6 +18,8 @@ export async function rootLoader() {
 		const user = me ? (me as User) : null;
 
 		hydrate(user);
+
+		i18next.changeLanguage(user?.locale);
 	}
 
 	const { user } = userGetState();

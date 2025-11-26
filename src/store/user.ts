@@ -14,6 +14,7 @@ export type User = {
 	avatar: string;
 	email: string;
 	lastLogin: string;
+	locale: string;
 	registeredRecently: boolean;
 	subscription: Subscription;
 } | null;

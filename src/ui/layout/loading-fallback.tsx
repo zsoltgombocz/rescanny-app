@@ -1,8 +1,11 @@
 import type { JSX } from "react";
+import { useTranslation } from "react-i18next";
 import { Text } from "../components/text";
 import LoadingIcon from "../icons/loading";
 
 export function LoadingFallback(): JSX.Element {
+	const { t } = useTranslation();
+
 	return (
 		<div
 			className={
@@ -11,7 +14,7 @@ export function LoadingFallback(): JSX.Element {
 		>
 			<LoadingIcon />
 
-			<Text>Betöltés</Text>
+			<Text>{t("loading")}</Text>
 		</div>
 	);
 }
