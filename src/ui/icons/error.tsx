@@ -27,9 +27,9 @@ export default function ErrorIcon({
 				<path
 					d="M9.17004 14.8299L14.83 9.16992"
 					stroke="inherit"
-					stroke-width="1.5"
-					stroke-linecap="round"
-					stroke-linejoin="round"
+					strokeWidth="1.5"
+					strokeLinecap="round"
+					strokeLinejoin="round"
 				/>
 				<path
 					d="M14.83 14.8299L9.17004 9.16992"
