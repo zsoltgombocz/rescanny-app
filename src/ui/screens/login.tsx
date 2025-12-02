@@ -123,8 +123,16 @@ export default function Login() {
 								privacy: t("login.link.privacy"),
 							}}
 							components={[
-								<Link key={0} variant="primary" to={"/terms-and-conditions"} />,
-								<Link key={1} variant="primary" to={"/privacy"} />,
+								<Link
+									key={0}
+									variant="primary"
+									to={t("login.link.route.terms")}
+								/>,
+								<Link
+									key={1}
+									variant="primary"
+									to={t("login.link.route.privacy")}
+								/>,
 							]}
 						></Trans>
 					</Text>

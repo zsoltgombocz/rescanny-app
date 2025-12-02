@@ -3,7 +3,7 @@ import type { JSX } from "react";
 import { twMerge } from "tailwind-merge";
 import LoadingIcon from "../icons/loading";
 
-type Variants = "primary" | "gray" | "danger" | "custom";
+type Variants = "primary" | "gray" | "danger" | "fancy" | "custom";
 
 type BaseProps = {
 	variant: Variants;
@@ -40,6 +40,8 @@ export function Button<T extends React.ElementType = "button">({
 			"bg-gray-800/50 border border-gray-700 hover:bg-gray-700",
 		variant === "danger" &&
 			"bg-red-500/5 border border-red-500/20 hover:bg-red-500/10 text-red-400",
+		variant === "fancy" &&
+			"bg-gradient-to-r from-indigo-500 to-teal-500 font-medium hover:shadow-lg !px-8 !py-3",
 		variant === "custom" && "rounded-xl shadow-lg",
 		className,
 	);

@@ -1,9 +1,14 @@
 import { type JSX, Suspense } from "react";
-import { Outlet, useLoaderData, useNavigation } from "react-router";
+import {
+	Outlet,
+	useLoaderData,
+	useLocation,
+	useNavigation,
+} from "react-router";
 import type { ApiError } from "../../api/errors";
 import type { MaintenanceMode } from "../../api/types";
 import { useUser } from "../../store/user";
-import Header from "../components/header";
+import Header from "../components/header/header";
 import Navbar from "../components/navbar/navbar";
 import ErrorPage from "../screens/error";
 import Maintenace from "../screens/maintenance";
@@ -17,6 +22,8 @@ export function AppLayout(): JSX.Element {
 		maintenanceMode: MaintenanceMode | undefined;
 		error: ApiError | null;
 	}>();
+
+	const location = useLocation();
 
 	if (error) {
 		return (
@@ -44,7 +51,7 @@ export function AppLayout(): JSX.Element {
 
 	return (
 		<div className={"min-h-[100dvh] flex flex-col"}>
-			{user && <Header />}
+			{(location.pathname.includes("/page") || user) && <Header />}
 			<main
 				className={
 					"container mx-auto px-6 text-white h-full flex-grow flex flex-col"

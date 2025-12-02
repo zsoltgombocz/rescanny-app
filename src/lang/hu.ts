@@ -21,6 +21,11 @@ export default {
 			link: {
 				terms: "Általános Szerződési Feltételeket",
 				privacy: "Adatvédelmi Szabályzatot",
+
+				route: {
+					terms: "/page/altalanos-szerzodesi-feltetelek",
+					privacy: "/page/adatvedelmi-szabalyzat",
+				},
 			},
 			googleButton: "Folytatás Google-lel",
 			facebookButton: "Folytatás Facebook-kal",

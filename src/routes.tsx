@@ -1,6 +1,7 @@
 import { createBrowserRouter, type RouteObject } from "react-router";
 import { lazyRoute } from "./helpers/lazy-route";
 import { magicLinkLoginLoader } from "./loaders/magic-link-login";
+import { pageLoader } from "./loaders/page";
 import { rootLoader } from "./loaders/root-loader";
 import { AppLayout } from "./ui/layout/app-layout";
 import { FullPageLoader } from "./ui/layout/full-page-loader";
@@ -41,6 +42,11 @@ export const routes: RouteObject[] = [
 						element: null,
 					},
 				],
+			},
+			{
+				path: "page/:slug",
+				loader: pageLoader,
+				lazy: lazyRoute(() => import("./ui/screens/page"), AuthPolicy.None),
 			},
 			{ path: "*", element: <NotFound /> },
 		],
