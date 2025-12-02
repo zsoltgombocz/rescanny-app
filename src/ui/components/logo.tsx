@@ -16,7 +16,8 @@ export function Logo({ className, scale = "big" }: Props): JSX.Element {
 		scale === "small" && "text-lg sm:text-xl",
 	);
 	return (
-		<div
+		<a
+			href={"/"}
 			className={twMerge(
 				className,
 				"relative inline-flex items-center justify-center w-fit",
@@ -42,6 +43,6 @@ export function Logo({ className, scale = "big" }: Props): JSX.Element {
 					R
 				</span>
 			</div>
-		</div>
+		</a>
 	);
 }
