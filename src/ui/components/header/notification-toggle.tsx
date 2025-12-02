@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import BellIcon from "../icons/bell";
+import BellIcon from "../../icons/bell";
 
 export default function NotificationToggle(): JSX.Element {
 	return (
