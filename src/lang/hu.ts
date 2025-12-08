@@ -75,6 +75,15 @@ export default {
 		},
 		button: {
 			reloadPage: "Újrapróbálás",
+			cancel: "Mégse",
+		},
+		modal: {
+			profileDeletion: {
+				title: "Biztosan törölni szeretnéd a fiókodat?",
+				description:
+					"A törlés visszavonhatatlan, és <0>minden adata végleg elveszik</0>, beleértve az összes korábbi bejegyzést, statisztikát, valamint a feltöltött fájlokat (képek, blokkok, bizonylatok).<br /><br /><0>A művelet után semmit sem tudunk visszaállítani.</0>",
+				confirm: "Törlés!",
+			},
 		},
 	},
 };
