@@ -11,5 +11,5 @@ export function handleActionException(e: unknown): ActionResultObject {
 
 	notifyError(error);
 
-	return { success: false, error: null } as ActionResultObject;
+	throw error;
 }

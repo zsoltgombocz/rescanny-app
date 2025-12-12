@@ -1,4 +1,7 @@
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router";
+import { useUserStore } from "../store/user";
+import { ApiError } from "../api/errors";
 
 export interface UseAsyncActionOptions<TResult> {
 	onSuccess?: (result: TResult) => void;
@@ -11,6 +14,8 @@ export function useAsyncAction<TArgs extends unknown[], ActionResultObject>(
 	options: UseAsyncActionOptions<ActionResultObject> = {},
 ) {
 	const { onSuccess, onError, onFinally } = options;
+	const navigate = useNavigate();
+	const { hydrate } = useUserStore();
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<unknown | null>(null);
@@ -24,6 +29,11 @@ export function useAsyncAction<TArgs extends unknown[], ActionResultObject>(
 				onSuccess?.(result);
 				return result;
 			} catch (err) {
+				if (err instanceof ApiError && err.code === 401) {
+					hydrate(null);
+					navigate("/login");
+				}
+				
 				setError(err);
 				onError?.(err);
 				throw err;
@@ -33,7 +43,7 @@ export function useAsyncAction<TArgs extends unknown[], ActionResultObject>(
 			}
 		},
 
-		[fn, onSuccess, onError, onFinally],
+		[fn, onSuccess, onError, onFinally, navigate, hydrate],
 	);
 
 	return { run, loading, error } as const;
