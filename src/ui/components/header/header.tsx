@@ -16,13 +16,13 @@ export default function Header(): JSX.Element {
 			<div className={"flex items-center gap-3"}>
 				<div className={"flex items-center gap-4"}>
 					{location.pathname.includes("page") && <GoBackButton />}
-					<a href="/" className="flex gap-2 items-center">
+					<div className="flex gap-2 items-center">
 						<Logo scale="small" />
 
 						<Title type="h1" className={"text-xl! sm:text-2xl! text-white"}>
 							Rescanny
 						</Title>
-					</a>
+					</div>
 				</div>
 			</div>
 		</header>
