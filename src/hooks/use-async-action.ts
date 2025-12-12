@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router";
-import { useUserStore } from "../store/user";
 import { ApiError } from "../api/errors";
+import { useUserStore } from "../store/user";
 
 export interface UseAsyncActionOptions<TResult> {
 	onSuccess?: (result: TResult) => void;
@@ -33,7 +33,7 @@ export function useAsyncAction<TArgs extends unknown[], ActionResultObject>(
 					hydrate(null);
 					navigate("/login");
 				}
-				
+
 				setError(err);
 				onError?.(err);
 				throw err;
