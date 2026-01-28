@@ -21,7 +21,7 @@ export default function LinkBox({
 	return (
 		<Link
 			className={twMerge(
-				"block bg-gray-800/50 border border-gray-700 rounded-xl p-4 hover:bg-gray-800 transition text-left group",
+				"block bg-card/50 border border-border rounded-xl p-4 hover:bg-card transition text-left group",
 				className,
 			)}
 			{...props}
@@ -30,7 +30,7 @@ export default function LinkBox({
 				<div className={"flex items-center gap-3"}>
 					<div
 						className={
-							"w-12 h-12 rounded-lg bg-gray-700/50 flex items-center justify-center"
+							"w-12 h-12 rounded-lg bg-secondary/50 flex items-center justify-center"
 						}
 					>
 						{icon}
@@ -41,11 +41,7 @@ export default function LinkBox({
 					</div>
 				</div>
 
-				<ChevronRight
-					className={
-						"w-5 h-5 stroke-gray-500 group-hover:stroke-white transition"
-					}
-				/>
+				<ChevronRight className={"w-5 h-5 stroke-muted-foreground"} />
 			</div>
 		</Link>
 	);

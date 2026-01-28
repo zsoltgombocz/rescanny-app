@@ -4,7 +4,7 @@ import type { AnyAppError } from "../api/errors";
 import Toast from "./components/toast";
 
 const baseConfig: ToastOptions = {
-	position: "bottom-center",
+	position: "top-center",
 	autoClose: 4000,
 	closeButton: false,
 	hideProgressBar: true,

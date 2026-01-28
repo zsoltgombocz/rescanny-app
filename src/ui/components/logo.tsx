@@ -25,13 +25,13 @@ export function Logo({ className, scale = "big" }: Props): JSX.Element {
 		>
 			<div
 				className={
-					"absolute -inset-6 rounded-3xl bg-gradient-to-r from-indigo-600 to-teal-600 opacity-20 blur-2xl"
+					"absolute -inset-6 rounded-3xl bg-gradient-to-r from-primary to-accent opacity-20 blur-2xl"
 				}
 			></div>
 			<div
 				className={twMerge(
 					sizeClass,
-					"relative bg-gradient-to-r from-indigo-500 to-teal-500 flex items-center justify-center shadow-2xl",
+					"relative bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-2xl",
 				)}
 			>
 				<span

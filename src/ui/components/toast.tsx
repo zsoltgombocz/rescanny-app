@@ -12,8 +12,8 @@ type ToastData = {
 };
 
 const icon = {
-	success: <TickIcon className={"stroke-emerald-500"} />,
-	error: <ErrorIcon className={"stroke-rose-500"} />,
+	success: <TickIcon className={"stroke-success"} />,
+	error: <ErrorIcon className={"stroke-destructive"} />,
 };
 
 export default function Toast({ closeToast, data }: ToastContentProps) {
@@ -24,21 +24,21 @@ export default function Toast({ closeToast, data }: ToastContentProps) {
 	const iconComponent = icon[variant];
 	const containerClass = twMerge(
 		"flex items-start gap-3 p-3 rounded-xl border w-full",
-		variant === "success" && "border-emerald-500 bg-emerald-500/10",
-		variant === "error" && "border-rose-500 bg-rose-500/10",
+		variant === "success" && "border-success/50 bg-success/5",
+		variant === "error" && "border-destructive/50 bg-destructive/5",
 	);
 	return (
 		<div className={containerClass}>
 			{iconComponent}
 			<div>
-				<Text className={"text-white"}>{title}</Text>
+				<Text className={"text-foreground"}>{title}</Text>
 				{body && <Text className={"text-sm mt-2"}>{body}</Text>}
 			</div>
 			<button
 				type="button"
 				onClick={closeToast}
 				className={
-					"w-7 h-7 ml-auto rounded-lg flex justify-center items-center stroke-gray-400 hover:stroke-gray-100 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/10"
+					"w-7 h-7 ml-auto rounded-lg flex justify-center items-center stroke-muted-foreground hover:stroke-foreground hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring/20"
 				}
 			>
 				<Close />

@@ -13,7 +13,7 @@ export default function Avatar({
 	return (
 		<div
 			className={twMerge(
-				"w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-teal-500 flex items-center justify-center text-2xl font-semibold",
+				"w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-2xl font-semibold",
 				className,
 			)}
 			{...rest}

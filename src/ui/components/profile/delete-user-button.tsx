@@ -20,7 +20,7 @@ export default function DeleteUserButton() {
 					/>
 				),
 				confirmText: t("modal.profileDeletion.confirm"),
-				confirmVariant: "danger",
+				confirmVariant: "danger-solid",
 			},
 			() => {
 				run();
@@ -32,7 +32,7 @@ export default function DeleteUserButton() {
 		<Button
 			className={"py-4"}
 			loading={loading}
-			icon={<TrashIcon className={"fill-red-400 w-5 h-5"} />}
+			icon={<TrashIcon className={"fill-destructive w-5 h-5"} />}
 			variant="danger"
 			onClick={handleDelete}
 		>

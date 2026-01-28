@@ -11,7 +11,7 @@ export default function GoBackButton(): JSX.Element {
 			type={"button"}
 			onClick={() => navigate(-1)}
 			className={
-				"relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800/50 border border-gray-700 flex items-center justify-center hover:bg-gray-800 transition"
+				"relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-card border border-border hover:bg-secondary  flex items-center justify-center transition"
 			}
 		>
 			<ChevronRight className={"stroke-gray-300 rotate-180"} />

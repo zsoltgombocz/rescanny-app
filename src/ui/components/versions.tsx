@@ -16,7 +16,7 @@ export function Versions({
 	return (
 		<Text
 			className={twMerge(
-				"text-sm text-gray-500 flex gap-2 items-center justify-center my-8",
+				"text-sm text-muted-foreground flex gap-2 items-center justify-center my-8",
 				className,
 			)}
 		>

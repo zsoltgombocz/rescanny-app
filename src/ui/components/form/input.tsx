@@ -28,8 +28,8 @@ export default function Input({
 	const id = name + useId();
 
 	const inputClasses = twMerge(
-		"transition w-full rounded-xl border border-gray-700 bg-gray-800/80 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent pl-10 pr-3 py-2.5 text-sm",
-		"aria-[invalid=true]:border-red-500 aria-[invalid=true]:focus:ring-red-500",
+		"transition w-full rounded-xl bg-card/80 border border-border focus:ring-primary text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:border-transparent pl-10 pr-3 py-2.5 text-sm",
+		"aria-[invalid=true]:border-destructive aria-[invalid=true]:focus:ring-destructive",
 		"disabled:opacity-50 disabled:grayscale-25 disabled:cursor-not-allowed",
 	);
 

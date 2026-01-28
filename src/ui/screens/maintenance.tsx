@@ -26,14 +26,12 @@ export default function Maintenace(): JSX.Element {
 					{t("maintenance.title")}
 				</Title>
 				{maintenanceMode?.from && maintenanceMode?.to && (
-					<Text className={"text-gray-500 text-sm"}>
+					<Text className={"text-sm"}>
 						{maintenanceMode?.from} - {maintenanceMode?.to}
 					</Text>
 				)}
 				<Text className={"mb-4 mt-6"}>{maintenanceMode?.message}</Text>
-				<Text className={"text-gray-500 text-sm"}>
-					{t("maintenance.subtitle")}
-				</Text>
+				<Text className={"text-sm"}>{t("maintenance.subtitle")}</Text>
 			</div>
 
 			<Versions />

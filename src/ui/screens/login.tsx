@@ -64,7 +64,7 @@ export default function Login() {
 						onSubmit={handleSubmit(onSubmit)}
 					>
 						{errors.root?.message && (
-							<div className="border-rose-500 bg-rose-500/10 p-3 rounded-xl border">
+							<div className="border-destructive bg-destructive/50 p-3 rounded-xl border">
 								<Text className={"text-sm text-white"}>
 									{errors.root.message}
 								</Text>

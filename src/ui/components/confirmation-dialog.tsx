@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useId } from "react";
 import { useTranslation } from "react-i18next";
-import CloseIcon from "../icons/close";
+import type { Variants as ButtonVariants } from "../components/button.tsx";
 import { Button } from "./button";
+import { Text } from "./text.tsx";
+import { Title } from "./title.tsx";
 
 interface ConfirmationDialogProps {
 	isOpen: boolean;
@@ -12,7 +14,7 @@ interface ConfirmationDialogProps {
 	description: ReactNode;
 	confirmText?: string;
 	cancelText?: string;
-	confirmVariant?: "primary" | "danger";
+	confirmVariant?: ButtonVariants;
 }
 
 export function ConfirmationDialog({
@@ -23,7 +25,7 @@ export function ConfirmationDialog({
 	description,
 	confirmText = "Confirm",
 	cancelText,
-	confirmVariant = "danger",
+	confirmVariant = "danger-solid",
 }: ConfirmationDialogProps) {
 	const { t } = useTranslation();
 
@@ -57,48 +59,40 @@ export function ConfirmationDialog({
 	if (!isOpen) return null;
 
 	return (
-		<div
-			role="dialog"
-			onKeyDown={keyDownHandler}
+		<button
+			type={"button"}
 			className={
-				"fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+				"fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
 			}
 			onClick={onClose}
-			aria-modal="true"
-			aria-labelledby={titleId}
-			aria-describedby={descriptionId}
 		>
-			<div className="bg-gray-900 rounded-2xl border-gray-700 w-full max-w-md p-6 relative">
-				<button
-					type={"button"}
-					onClick={onClose}
-					className="absolute top-5 right-5 text-gray-400 hover:text-white transition-colors"
-					aria-label="Close"
-				>
-					<CloseIcon className="w-8 h-8 stroke-gray-400" />
-				</button>
-
-				<h3 id={titleId} className="text-lg font-semibold text-white mb-4">
+			<dialog
+				open={isOpen}
+				aria-labelledby={titleId}
+				aria-describedby={descriptionId}
+				onKeyDown={keyDownHandler}
+				onClick={(e) => e.stopPropagation()}
+				className={
+					"bg-card border border-border rounded-2xl w-full max-w-md p-6 relative text-center"
+				}
+			>
+				<Title type={"h3"} id={titleId} className={"text-white mb-4"}>
 					{title}
-				</h3>
+				</Title>
 
-				<div id={descriptionId} className="text-gray-300 mb-6">
+				<Text id={descriptionId} className={"mb-6"}>
 					{description}
-				</div>
+				</Text>
 
-				<div className="flex gap-4 flex-col-reverse sm:flex-row">
-					<Button variant="gray" className="flex-1" onClick={onClose}>
-						{cancelText || t("button.cancel")}
-					</Button>
-					<Button
-						variant={confirmVariant}
-						className="flex-1"
-						onClick={onConfirm}
-					>
+				<div className={"flex gap-4 flex-col"}>
+					<Button variant={confirmVariant} onClick={onConfirm}>
 						{confirmText}
 					</Button>
+					<Button variant={"gray-solid"} onClick={onClose}>
+						{cancelText || t("button.cancel")}
+					</Button>
 				</div>
-			</div>
-		</div>
+			</dialog>
+		</button>
 	);
 }

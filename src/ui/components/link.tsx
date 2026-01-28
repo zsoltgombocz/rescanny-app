@@ -16,8 +16,9 @@ export default function Link({
 }: Props): JSX.Element {
 	const classes = twMerge(
 		"text-sm",
-		variant === "primary" && "text-indigo-400 hover:text-indigo-300",
-		variant === "gray" && "text-gray-400 hover:text-gray-300",
+		variant === "primary" && "text-primary hover:text-primary/80",
+		variant === "gray" &&
+			"text-muted-foreground hover:text-muted-foreground/80",
 		className,
 	);
 	return (

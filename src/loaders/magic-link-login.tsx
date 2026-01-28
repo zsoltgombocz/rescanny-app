@@ -1,7 +1,7 @@
+import i18next from "i18next";
 import { type LoaderFunctionArgs, redirect } from "react-router";
 import magicLinkValidation from "../actions/validate-magic-link";
 import { type User, userGetState } from "../store/user";
-import i18next from "i18next";
 
 export async function magicLinkLoginLoader({ request }: LoaderFunctionArgs) {
 	const url = new URL(request.url);
@@ -15,7 +15,7 @@ export async function magicLinkLoginLoader({ request }: LoaderFunctionArgs) {
 	const { success, data } = await magicLinkValidation(token);
 
 	if (success) {
-		const user = data as User
+		const user = data as User;
 		if (user) {
 			hydrate(user);
 

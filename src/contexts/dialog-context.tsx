@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useContext, useState } from "react";
+import type { Variants as ButtonVariants } from "../ui/components/button";
 import { ConfirmationDialog } from "../ui/components/confirmation-dialog";
 
 interface DialogOptions {
@@ -6,7 +7,7 @@ interface DialogOptions {
 	description: ReactNode;
 	confirmText?: string;
 	cancelText?: string;
-	confirmVariant?: "primary" | "danger";
+	confirmVariant?: ButtonVariants;
 }
 
 interface DialogContextType {

@@ -24,9 +24,9 @@ export default function UserSection(): JSX.Element {
 					className={"text-xl! sm:text-2xl! text-white flex items-center"}
 				>
 					<span>{user.displayName}</span>
-					<span className={"text-sm opacity-50 ml-2"}>
+					<Text className={"text-sm ml-2"}>
 						({user.id.substring(user.id.length - 6)})
-					</span>
+					</Text>
 				</Title>
 				<Text className={"mt-1 text-sm"}>{user.email}</Text>
 				<SubscriptionBadge hasCrown={true} type={"Pro"} />

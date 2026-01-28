@@ -18,7 +18,7 @@ export default function Profile(): JSX.Element {
 			<AccountManagementSection />
 
 			<div className={"mt-6 space-y-3"}>
-				<Title type="h4" className={"text-gray-400"}>
+				<Title type="h4" className={"text-muted-foreground"}>
 					{t("profile.actions")}
 				</Title>
 

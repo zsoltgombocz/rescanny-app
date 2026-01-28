@@ -1,16 +1,19 @@
 import type { JSX } from "react";
 import { useLocation } from "react-router";
+import { useUserStore } from "../../../store/user.ts";
 import { Logo } from "../logo";
 import { Title } from "../title";
 import GoBackButton from "./go-back-button";
+import NotificationToggle from "./notification-toggle.tsx";
 
 export default function Header(): JSX.Element {
 	const location = useLocation();
+	const user = useUserStore();
 
 	return (
 		<header
 			className={
-				"border border-b border-gray-800 w-full px-4 sm:px-6 py-4 flex justify-between items-center"
+				"border-b border-border w-full px-4 sm:px-6 py-4 flex justify-between items-center"
 			}
 		>
 			<div className={"flex items-center gap-3"}>
@@ -25,6 +28,8 @@ export default function Header(): JSX.Element {
 					</div>
 				</div>
 			</div>
+
+			{user.hydrated && <NotificationToggle />}
 		</header>
 	);
 }

@@ -15,7 +15,7 @@ export default function ErrorPage(): JSX.Element {
 	return (
 		<PageLayout>
 			<div className={"text-center mt-24 max-w-md"}>
-				<IconWrapper variant="orange">
+				<IconWrapper variant="danger">
 					<CloudErrorIcon className={"stroke-white w-7 h-7"} />
 				</IconWrapper>
 

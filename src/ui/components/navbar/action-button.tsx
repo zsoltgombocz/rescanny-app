@@ -9,7 +9,7 @@ export default function ActionButton(): JSX.Element {
 		>
 			<div
 				className={
-					"w-14 h-14 rounded-full bg-gradient-to-r from-indigo-500 to-teal-500 flex items-center justify-center shadow-lg hover:shadow-xl transition ring-4 ring-gray-900"
+					"w-14 h-14 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center shadow-lg hover:shadow-xl transition ring-4 ring-background"
 				}
 			>
 				<PlusIcon className={"stroke-white w-10 h-10"} />

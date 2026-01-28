@@ -18,12 +18,12 @@ export default function SubscriptionBadge({
 	return (
 		<div
 			className={
-				"mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20"
+				"mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20"
 			}
 			{...rest}
 		>
-			<CrownIcon className={"stroke-indigo-400 w-4 h-4"} />
-			<span className={"text-sm font-medium text-indigo-400"}>
+			<CrownIcon className={"stroke-primary w-4 h-4"} />
+			<span className={"text-sm font-medium text-primary"}>
 				{t("subscriptionBadge", { type })}
 			</span>
 		</div>

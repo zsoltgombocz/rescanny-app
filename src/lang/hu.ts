@@ -83,9 +83,9 @@ export default {
 		},
 		modal: {
 			profileDeletion: {
-				title: "Biztosan törölni szeretnéd a fiókodat?",
+				title: "Fiók törlése",
 				description:
-					"A törlés visszavonhatatlan, és <0>minden adata végleg elveszik</0>, beleértve az összes korábbi bejegyzést, statisztikát, valamint a feltöltött fájlokat (képek, blokkok, bizonylatok).<br /><br /><0>A művelet után semmit sem tudunk visszaállítani.</0>",
+					"Biztosan törölni szeretnéd a fiókodat? Ez a művelet <0>nem visszavonható</0>, és minden adatod <0>véglegesen törlésre kerül</0>.",
 				confirm: "Törlés!",
 			},
 		},
