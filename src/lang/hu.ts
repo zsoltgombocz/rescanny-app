@@ -48,9 +48,13 @@ export default {
 			deleteButton: "Fiók törlése",
 			accountSettings: {
 				title: "Fiók beállítások",
-				email: {
-					title: "E-mail cím módosítása",
-					subtitle: "Jelenlegi: {{email}}",
+				personal: {
+					title: "Személyes adatok",
+					subtitle: "Név és email cím módosítása",
+				},
+				appearance: {
+					title: "Megjelenés",
+					subtitle: "Nyelv és időzóna beállítások",
 				},
 				notifications: {
 					title: "Értesítése",

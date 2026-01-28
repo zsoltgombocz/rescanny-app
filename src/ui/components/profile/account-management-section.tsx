@@ -1,14 +1,13 @@
 import type { JSX } from "react";
 import { useTranslation } from "react-i18next";
-import { useUser } from "../../../store/user";
 import BellIcon from "../../icons/bell";
 import UserInfo from "../../icons/user-info";
 import LinkBox from "../layout/link-box";
 import { Title } from "../title";
+import CogIcon from "../../icons/cog.tsx";
 
 export default function AccountManagementSection(): JSX.Element {
 	const { t } = useTranslation();
-	const user = useUser();
 
 	return (
 		<div className={"mt-6 space-y-3"}>
@@ -17,12 +16,17 @@ export default function AccountManagementSection(): JSX.Element {
 			</Title>
 
 			<LinkBox
-				to="/manage/email"
+				to="/manage/personal"
 				icon={<UserInfo className={"w-6 h-6 stroke-white"}></UserInfo>}
-				title={t("profile.accountSettings.email.title")}
-				subtitle={t("profile.accountSettings.email.subtitle", {
-					email: user?.email,
-				})}
+				title={t("profile.accountSettings.personal.title")}
+				subtitle={t("profile.accountSettings.personal.subtitle")}
+			/>
+
+			<LinkBox
+				to="/manage/appearance"
+				icon={<CogIcon className={"w-6 h-6 stroke-white"}></CogIcon>}
+				title={t("profile.accountSettings.appearance.title")}
+				subtitle={t("profile.accountSettings.appearance.subtitle")}
 			/>
 
 			<LinkBox
