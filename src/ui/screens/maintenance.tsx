@@ -18,7 +18,7 @@ export default function Maintenace(): JSX.Element {
 	return (
 		<PageLayout>
 			<div className={"text-center mt-24 max-w-md"}>
-				<IconWrapper>
+				<IconWrapper className={"mx-auto mb-6"}>
 					<ShieldIcon className={"stroke-white w-7 h-7"} />
 				</IconWrapper>
 
