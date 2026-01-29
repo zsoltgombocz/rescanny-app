@@ -9,7 +9,7 @@ export default function DisplayBox({
 	return (
 		<section
 			className={twMerge(
-				"bg-card/50 border border-border rounded-2xl pt-6 pr-6 pb-6 pl-6",
+				"bg-card/50 border border-border rounded-xl p-6",
 				className,
 			)}
 			{...props}
