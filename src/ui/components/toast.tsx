@@ -29,7 +29,9 @@ export default function Toast({ closeToast, data }: ToastContentProps) {
 	);
 	return (
 		<div className={containerClass}>
-			{iconComponent}
+			<span className={"w-6 h-auto"}>
+				{iconComponent}
+			</span>
 			<div>
 				<Text className={"text-foreground"}>{title}</Text>
 				{body && <Text className={"text-sm mt-2"}>{body}</Text>}
@@ -38,10 +40,10 @@ export default function Toast({ closeToast, data }: ToastContentProps) {
 				type="button"
 				onClick={closeToast}
 				className={
-					"w-7 h-7 ml-auto rounded-lg flex justify-center items-center stroke-muted-foreground hover:stroke-foreground hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring/20"
+					"min-w-7 h-7 ml-auto rounded-lg flex justify-center items-center stroke-muted-foreground hover:stroke-foreground hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-ring/20"
 				}
 			>
-				<Close />
+				<Close/>
 			</button>
 		</div>
 	);
