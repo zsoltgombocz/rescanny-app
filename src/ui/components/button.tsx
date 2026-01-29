@@ -46,7 +46,7 @@ export function Button<T extends React.ElementType = "button">({
 		variant === "danger" &&
 			"bg-destructive/5 border border-destructive/20 hover:bg-destructive/10 text-destructive",
 		variant === "fancy" &&
-			"bg-gradient-to-r from-indigo-500 to-teal-500 font-medium hover:shadow-lg !px-8 !py-3",
+			"bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 font-medium hover:shadow-lg !px-8 !py-3",
 		variant === "custom" && "rounded-xl shadow-lg",
 		variant === "gray-solid" &&
 			"bg-secondary hover:bg-secondary/80 text-secondary-foreground",

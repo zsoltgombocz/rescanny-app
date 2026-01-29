@@ -28,14 +28,15 @@ export default function Input({
 	const id = name + useId();
 
 	const inputClasses = twMerge(
-		"transition w-full rounded-xl bg-card/80 border border-border focus:ring-primary text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:border-transparent pl-10 pr-3 py-2.5 text-sm",
+		"transition w-full rounded-xl bg-card/80 border border-border focus:ring-primary text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:border-transparent px-3 py-2.5 text-sm",
 		"aria-[invalid=true]:border-destructive aria-[invalid=true]:focus:ring-destructive",
 		"disabled:opacity-50 disabled:grayscale-25 disabled:cursor-not-allowed",
+		icon && "!pl-10"
 	);
 
 	return (
 		<div className={className}>
-			<label htmlFor={id} className={"block text-sm text-gray-300"}>
+			<label htmlFor={id} className={"block text-sm text-muted-foreground"}>
 				{label}
 			</label>
 			<div className={"mt-1 relative"}>
