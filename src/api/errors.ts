@@ -31,7 +31,7 @@ export class ApiError extends AppError {
 	}
 
 	public getMessage(): string {
-		return `${this.code} - ${this.message}`;
+		return `${this.message}`;
 	}
 }
 
@@ -49,7 +49,3 @@ export class ValidationError extends AppError {
 }
 
 export type AnyAppError = NetworkError | ApiError | ValidationError;
-
-export const isRetryable = (err: AnyAppError) =>
-	err instanceof NetworkError ||
-	(err instanceof ApiError && err.code >= 500 && err.code < 600);

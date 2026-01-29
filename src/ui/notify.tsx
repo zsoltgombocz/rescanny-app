@@ -12,7 +12,7 @@ const baseConfig: ToastOptions = {
 };
 
 export function notifyError(err: AnyAppError) {
-	const title = t("errorOccured", { error: err.type });
+	const title = t("errorOccurred");
 	const message = err.getMessage() ?? "Unknown error";
 
 	toast(Toast, {
