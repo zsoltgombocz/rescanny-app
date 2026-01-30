@@ -7,6 +7,7 @@ const baseConfig: ToastOptions = {
 	position: "top-center",
 	autoClose: 4000,
 	closeButton: false,
+	closeOnClick: true,
 	hideProgressBar: true,
 	style: { background: "transparent", boxShadow: "none", minWidth: 400 },
 };
@@ -17,6 +18,7 @@ export function notifyError(err: AnyAppError) {
 
 	toast(Toast, {
 		...baseConfig,
+		toastId: btoa(message),
 		data: {
 			variant: "error",
 			title: title,
@@ -28,6 +30,7 @@ export function notifyError(err: AnyAppError) {
 export function notifySuccess(text: string) {
 	toast(Toast, {
 		...baseConfig,
+		toastId: btoa(text),
 		data: {
 			variant: "success",
 			title: text,
