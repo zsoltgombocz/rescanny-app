@@ -17,11 +17,14 @@ export default function IconWrapper({
 		variant === "gray" && "bg-secondary/50",
 	]);
 	return (
-		<div className={twMerge([
-			"flex w-16 h-16 rounded-xl shadow-lg items-center justify-center",
-			color,
-			className,
-		])} {...props}>
+		<div
+			className={twMerge([
+				"flex w-12 sm:w-16 h-12 sm:h-16 rounded-xl shadow-lg items-center justify-center",
+				color,
+				className,
+			])}
+			{...props}
+		>
 			{children}
 		</div>
 	);

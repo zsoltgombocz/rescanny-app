@@ -11,6 +11,7 @@ type Props = ComponentProps<"input"> & {
 	placeholder?: string;
 	icon?: JSX.Element;
 	errorMessage?: string;
+	inputClassName?: string;
 };
 
 export default function Input({
@@ -23,20 +24,27 @@ export default function Input({
 	placeholder,
 	icon,
 	errorMessage,
+	inputClassName,
+	id,
 	...rest
 }: Props): JSX.Element {
-	const id = name + useId();
+	const randomId = useId();
+	const inputId = id ?? name + randomId;
 
 	const inputClasses = twMerge(
 		"transition w-full rounded-xl bg-card/80 border border-border focus:ring-primary text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:border-transparent px-3 py-2.5 text-sm",
 		"aria-[invalid=true]:border-destructive aria-[invalid=true]:focus:ring-destructive",
 		"disabled:opacity-50 disabled:grayscale-25 disabled:cursor-not-allowed",
-		icon && "!pl-10"
+		icon && "!pl-10",
+		inputClassName,
 	);
 
 	return (
 		<div className={className}>
-			<label htmlFor={id} className={"block text-sm text-muted-foreground"}>
+			<label
+				htmlFor={inputId}
+				className={"block text-sm text-muted-foreground"}
+			>
 				{label}
 			</label>
 			<div className={"mt-1 relative"}>
@@ -48,7 +56,7 @@ export default function Input({
 					{icon}
 				</div>
 				<input
-					id={id}
+					id={inputId}
 					name={name}
 					type={type}
 					autoComplete={autocomplete}

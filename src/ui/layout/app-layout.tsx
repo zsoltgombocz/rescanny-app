@@ -54,7 +54,7 @@ export function AppLayout(): JSX.Element {
 			{(location.pathname.includes("/page") || user) && <Header />}
 			<main
 				className={
-					"container mx-auto px-6 text-white h-full flex-grow flex flex-col"
+					"container mx-auto px-3 sm:px-6 text-white h-full flex-grow flex flex-col"
 				}
 			>
 				<Suspense fallback={<LoadingFallback />}>
