@@ -20,7 +20,7 @@ type Fields = {
 
 export default function ManagePersonal() {
 	const { t } = useTranslation();
-	const { setHeaderAction } = useHeaderAction();
+	const { setHeaderAction, setShowBackButton } = useHeaderAction();
 	const user = useUser();
 
 	const {
@@ -69,10 +69,20 @@ export default function ManagePersonal() {
 			</Button>,
 		);
 
+		setShowBackButton(true);
+
 		return () => {
 			setHeaderAction(null);
+			setShowBackButton(false);
 		};
-	}, [isSubmitting, handleSubmit, setHeaderAction, t, onSubmit]);
+	}, [
+		isSubmitting,
+		handleSubmit,
+		setHeaderAction,
+		setShowBackButton,
+		t,
+		onSubmit,
+	]);
 
 	return (
 		<PageLayout type="simple">

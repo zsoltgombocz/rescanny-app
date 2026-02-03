@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import { useLocation } from "react-router";
 import { useHeaderAction } from "../../../contexts/header-action-context.tsx";
 import { useUserStore } from "../../../store/user.ts";
 import { Logo } from "../logo";
@@ -8,9 +7,8 @@ import GoBackButton from "./go-back-button";
 import NotificationToggle from "./notification-toggle.tsx";
 
 export default function Header(): JSX.Element {
-	const location = useLocation();
 	const user = useUserStore();
-	const { headerAction } = useHeaderAction();
+	const { headerAction, showBackButton } = useHeaderAction();
 
 	return (
 		<header
@@ -20,7 +18,7 @@ export default function Header(): JSX.Element {
 		>
 			<div className={"flex items-center gap-3"}>
 				<div className={"flex items-center gap-4"}>
-					{location.pathname.includes("page") && <GoBackButton />}
+					{showBackButton && <GoBackButton />}
 					<div className="flex gap-2 items-center">
 						<Logo scale="small" />
 

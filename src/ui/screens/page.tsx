@@ -1,6 +1,8 @@
 import type { JSX } from "react";
+import { useEffect } from "react";
 import { useLoaderData } from "react-router";
 import type { Page as PageType } from "../../api/types";
+import { useHeaderAction } from "../../contexts/header-action-context.tsx";
 import Block from "../components/block";
 import { Text } from "../components/text";
 import { Title } from "../components/title";
@@ -12,6 +14,16 @@ export default function Page(): JSX.Element {
 		page: PageType | null;
 		success: boolean;
 	}>();
+
+	const { setShowBackButton } = useHeaderAction();
+
+	useEffect(() => {
+		setShowBackButton(true);
+
+		return () => {
+			setShowBackButton(false);
+		};
+	}, [setShowBackButton]);
 
 	if (!success) {
 		return <NotFound />;
