@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 import { DialogProvider } from "./contexts/dialog-context.tsx";
+import { HeaderActionProvider } from "./contexts/header-action-context.tsx";
 import en from "./lang/en.ts";
 import hu from "./lang/hu.ts";
 
@@ -27,10 +28,12 @@ if (!root) {
 } else {
 	createRoot(root).render(
 		<StrictMode>
-			<DialogProvider>
-				<RouterProvider router={router}></RouterProvider>
-				<ToastContainer />
-			</DialogProvider>
+			<HeaderActionProvider>
+				<DialogProvider>
+					<RouterProvider router={router}></RouterProvider>
+					<ToastContainer />
+				</DialogProvider>
+			</HeaderActionProvider>
 		</StrictMode>,
 	);
 }
