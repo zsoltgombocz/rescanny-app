@@ -26,6 +26,7 @@ type State = {
 
 type Actions = {
 	hydrate: (user: User) => void;
+	update: (data: Partial<User>) => void;
 	clear: () => void;
 };
 
@@ -33,6 +34,10 @@ export const useUserStore = create<State & Actions>((set) => ({
 	user: null,
 	hydrated: false,
 	hydrate: (user) => set({ user, hydrated: true }),
+	update: (data: Partial<User>) =>
+		set((state) => ({
+			user: state.user ? { ...state.user, ...data } : null,
+		})),
 	clear: () => set({ user: null, hydrated: false }),
 }));
 

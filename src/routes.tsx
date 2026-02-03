@@ -33,6 +33,18 @@ export const routes: RouteObject[] = [
 				),
 			},
 			{
+				path: "manage",
+				children: [
+					{
+						path: "personal",
+						lazy: lazyRoute(
+							() => import("./ui/screens/manage-personal"),
+							AuthPolicy.Required,
+						),
+					},
+				],
+			},
+			{
 				path: "login",
 				lazy: lazyRoute(() => import("./ui/screens/login"), AuthPolicy.Guest),
 				children: [
