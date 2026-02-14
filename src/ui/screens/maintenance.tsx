@@ -9,7 +9,7 @@ import { Versions } from "../components/versions";
 import ShieldIcon from "../icons/shield";
 import PageLayout from "../layout/page-layout";
 
-export default function Maintenace(): JSX.Element {
+export default function Maintenance(): JSX.Element {
 	const { t } = useTranslation();
 	const { maintenanceMode } = useLoaderData<{
 		maintenanceMode: MaintenanceMode | undefined;

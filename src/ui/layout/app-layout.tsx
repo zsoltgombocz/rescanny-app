@@ -11,7 +11,7 @@ import { useUser } from "../../store/user";
 import Header from "../components/header/header";
 import Navbar from "../components/navbar/navbar";
 import ErrorPage from "../screens/error";
-import Maintenace from "../screens/maintenance";
+import Maintenance from "../screens/maintenance";
 import { LoadingFallback } from "./loading-fallback";
 
 export function AppLayout(): JSX.Element {
@@ -44,7 +44,7 @@ export function AppLayout(): JSX.Element {
 					"min-h-[100dvh] container mx-auto px-6 text-white h-full flex-grow flex flex-col"
 				}
 			>
-				<Maintenace />
+				<Maintenance />
 			</main>
 		);
 	}
