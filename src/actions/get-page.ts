@@ -1,7 +1,6 @@
-import type { AnyAppError } from "../api/errors";
 import { get as httpGet } from "../api/http";
 import type { ActionResultObject, Page } from "../api/types";
-import { notifyError } from "../ui/notify";
+import { handleActionException } from "./handle-action-exception.ts";
 
 export default async function getPage(
 	slug: string | undefined,
@@ -11,10 +10,6 @@ export default async function getPage(
 
 		return { success: true, error: null, data: page };
 	} catch (e: unknown) {
-		const error = e as AnyAppError;
-
-		notifyError(error);
-
-		return { success: false, error: null };
+		return handleActionException(e);
 	}
 }

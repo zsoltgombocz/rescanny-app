@@ -1,7 +1,7 @@
 import type { HTMLAttributes, JSX } from "react";
 import { useTranslation } from "react-i18next";
 import CrownIcon from "../../icons/crown";
-import {twMerge} from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 
 type Props = HTMLAttributes<HTMLElement> & {
 	hasCrown?: boolean;
@@ -20,7 +20,7 @@ export default function SubscriptionBadge({
 		<div
 			className={twMerge(
 				"mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20",
-				className
+				className,
 			)}
 			{...rest}
 		>

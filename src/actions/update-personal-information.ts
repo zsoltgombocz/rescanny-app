@@ -1,7 +1,7 @@
-import { type AnyAppError, ValidationError } from "../api/errors";
 import { post as httpPost } from "../api/http";
 import type { ActionResultObject } from "../api/types";
-import { notifyError, notifySuccess } from "../ui/notify";
+import { notifySuccess } from "../ui/notify";
+import { handleActionException } from "./handle-action-exception.ts";
 
 export default async function updatePersonalInformation(formData: {
 	last_name: string | undefined;
@@ -17,14 +17,6 @@ export default async function updatePersonalInformation(formData: {
 
 		return { success: true, error: null };
 	} catch (e: unknown) {
-		const error = e as AnyAppError;
-
-		if (error instanceof ValidationError) {
-			return { success: false, error: error };
-		}
-
-		notifyError(error);
-
-		return { success: false, error: null };
+		return handleActionException(e);
 	}
 }
