@@ -1,5 +1,6 @@
-import type { HTMLAttributes } from "react";
+import  { type HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
+import * as React from "react";
 
 type Props = {
 	children: React.ReactNode;
