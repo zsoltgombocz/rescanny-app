@@ -12,7 +12,7 @@ export default function MultiStepEmailChange(): JSX.Element {
 	const { t } = useTranslation();
 	const { update, user } = useUserStore((state) => state);
 	const [emailEditing, setEmailEditing] = useState<boolean>(false);
-	const [newEmail, setNewEmail] = useState<string>('');
+	const [newEmail, setNewEmail] = useState<string>("");
 
 	const onCodeRequested = (email: string) => {
 		setNewEmail(email);
@@ -21,7 +21,7 @@ export default function MultiStepEmailChange(): JSX.Element {
 	const onEmailChangeComplete = () => {
 		update({ email: newEmail });
 		setEmailEditing(false);
-		setNewEmail('');
+		setNewEmail("");
 	};
 
 	if (!emailEditing) {
