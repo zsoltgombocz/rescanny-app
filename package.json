@@ -11,6 +11,7 @@
 		"format": "biome check --write --unsafe"
 	},
 	"dependencies": {
+		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.14",
 		"axios": "^1.12.2",
 		"i18next": "^25.6.0",
