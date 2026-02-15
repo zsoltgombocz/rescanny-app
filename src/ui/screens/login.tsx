@@ -79,7 +79,7 @@ export default function Login() {
 							type="email"
 							label={t("input.emailLabel")}
 							placeholder={t("input.emailPlaceholder")}
-							autocomplete="email"
+							autoComplete="email"
 							disabled={isSubmitting}
 							errorMessage={errors.email?.message}
 						/>
@@ -110,7 +110,7 @@ export default function Login() {
 
 					<Button
 						disabled
-						className={"bg-[#1877F2] hover:hover:bg-[#166fe5]"}
+						className={"bg-[#1877F2] hover:bg-[#166fe5]"}
 						variant="custom"
 					>
 						{t("login.facebookButton")}

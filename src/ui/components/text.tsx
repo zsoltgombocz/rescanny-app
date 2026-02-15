@@ -6,8 +6,8 @@ type Props = {
 	className?: string;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-export function Text({ children, className }: Props) {
+export function Text({ children, className, ...rest }: Props) {
 	return (
-		<p className={twMerge("text-muted-foreground", className)}>{children}</p>
+		<p className={twMerge("text-muted-foreground", className)} {...rest}>{children}</p>
 	);
 }

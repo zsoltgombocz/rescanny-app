@@ -38,7 +38,7 @@ export function Button<T extends React.ElementType = "button">({
 }: ButtonProps<T>): JSX.Element {
 	const Component = as ?? "button";
 	const classes = twMerge(
-		"rounded-xl text-sm inline-flex items-center justify-center gap-2 transition font-semibold text-white px-5 py-3 w-full w-full",
+		"rounded-xl text-sm inline-flex items-center justify-center gap-2 transition font-semibold text-white px-5 py-3 w-full",
 		"disabled:opacity-90 disabled:grayscale-100 disabled:cursor-not-allowed",
 		variant === "primary" &&
 			"bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg",

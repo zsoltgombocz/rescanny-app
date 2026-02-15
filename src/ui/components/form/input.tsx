@@ -6,7 +6,7 @@ type Props = ComponentProps<"input"> & {
 	label?: string;
 	name: string;
 	type: string;
-	autocomplete?: string;
+	autoComplete?: string;
 	required?: boolean;
 	placeholder?: string;
 	icon?: JSX.Element;
@@ -19,7 +19,7 @@ export default function Input({
 	label,
 	type,
 	name,
-	autocomplete,
+	autoComplete,
 	required,
 	placeholder,
 	icon,
@@ -59,7 +59,7 @@ export default function Input({
 					id={inputId}
 					name={name}
 					type={type}
-					autoComplete={autocomplete}
+					autoComplete={autoComplete}
 					required={required}
 					placeholder={placeholder}
 					className={inputClasses}

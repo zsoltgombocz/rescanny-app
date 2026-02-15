@@ -64,7 +64,7 @@ export default {
 					subtitle: "Nyelv és időzóna beállítások",
 				},
 				notifications: {
-					title: "Értesítése",
+					title: "Értesítések",
 					subtitle: "Email és push értesítések kezelése",
 				},
 			},
