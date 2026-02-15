@@ -8,6 +8,8 @@ type Props = {
 
 export function Text({ children, className, ...rest }: Props) {
 	return (
-		<p className={twMerge("text-muted-foreground", className)} {...rest}>{children}</p>
+		<p className={twMerge("text-muted-foreground", className)} {...rest}>
+			{children}
+		</p>
 	);
 }
