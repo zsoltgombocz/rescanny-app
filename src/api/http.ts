@@ -11,7 +11,7 @@ import {
 } from "./errors";
 import type { LaravelValidationResponse } from "./types";
 
-const APP_ENV = import.meta.env.APP_ENV ?? "local";
+const APP_ENV = import.meta.env.VITE_APP_ENV ?? "local";
 
 const BASE_URL =
 	APP_ENV === "local" ? "/api" : (import.meta.env.VITE_API_URL ?? "");
