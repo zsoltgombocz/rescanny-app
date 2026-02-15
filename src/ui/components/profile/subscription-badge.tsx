@@ -1,7 +1,7 @@
 import type { HTMLAttributes, JSX } from "react";
 import { useTranslation } from "react-i18next";
-import CrownIcon from "../../icons/crown";
 import { twMerge } from "tailwind-merge";
+import CrownIcon from "../../icons/crown";
 
 type Props = HTMLAttributes<HTMLElement> & {
 	hasCrown?: boolean;
