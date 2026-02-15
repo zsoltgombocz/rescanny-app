@@ -24,7 +24,9 @@ export default function SubscriptionBadge({
 			)}
 			{...rest}
 		>
-			<CrownIcon className={"stroke-primary w-4 h-4"} />
+			<CrownIcon
+				className={twMerge("stroke-primary w-4 h-4", !hasCrown && "hidden")}
+			/>
 			<span className={"text-sm font-medium text-primary"}>
 				{t("subscriptionBadge", { type })}
 			</span>
