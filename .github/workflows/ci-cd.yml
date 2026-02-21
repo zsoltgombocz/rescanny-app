@@ -26,7 +26,7 @@ jobs:
       - name: Check Codestyle
         run: bun biome ci
 
-  build:
+  build_staging:
     name: Build
     if: |
       (github.event_name == 'push' && github.ref_name == 'main') ||
@@ -42,7 +42,11 @@ jobs:
         run: bun install
 
       - name: Build application
-        run: bun run build
+        run: |
+          export VITE_API_URL=${{ secrets.STAGING_API_URL }}
+          export VITE_API_TOKEN=${{ secrets.STAGING_API_KEY }}
+          export VITE_APP_ENV=staging
+          bun run build
 
       - name: Write release version to file
         run: echo "${{ github.ref_name }}" > dist/VERSION
@@ -50,7 +54,38 @@ jobs:
       - name: Upload dist as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: dist-staging
+          path: dist
+          if-no-files-found: error
+          retention-days: 1
+
+  build_production:
+    name: Build
+    if: github.event_name == 'release' && github.event.action == 'published'
+    needs: code_analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build application
+        run: |
+          export VITE_API_URL=${{ secrets.PRODUCTION_API_URL }}
+          export VITE_API_TOKEN=${{ secrets.PRODUCTION_API_KEY }}
+          export VITE_APP_ENV=production
+          bun run build
+
+      - name: Write release version to file
+        run: echo "${{ github.ref_name }}" > dist/VERSION
+
+      - name: Upload dist as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-production
           path: dist
           if-no-files-found: error
           retention-days: 1
@@ -58,13 +93,13 @@ jobs:
   deploy_staging:
     name: Deploy Staging to Server
     if: github.event_name == 'push' && github.ref_name == 'main'
-    needs: build
+    needs: build_staging
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: dist-staging
           path: dist
 
       - name: Sync dist folder to host
@@ -80,13 +115,13 @@ jobs:
   deploy_production:
     name: Deploy Production to Server
     if: github.event_name == 'release' && github.event.action == 'published'
-    needs: build
+    needs: build_production
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: dist-production
           path: dist
 
       - name: Sync dist folder to host
